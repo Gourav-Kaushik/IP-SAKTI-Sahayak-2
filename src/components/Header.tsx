@@ -24,6 +24,7 @@ interface HeaderProps {
   onOpenWizard: () => void;
   onOpenCorpus: () => void;
   onOpenAudit: () => void;
+  onOpenGateway?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -34,7 +35,8 @@ export const Header: React.FC<HeaderProps> = ({
   classification,
   onOpenWizard,
   onOpenCorpus,
-  onOpenAudit
+  onOpenAudit,
+  onOpenGateway
 }) => {
   const loc = STATIC_LOCALIZATION[language] || STATIC_LOCALIZATION.en;
 
@@ -53,9 +55,20 @@ export const Header: React.FC<HeaderProps> = ({
             <h1 className="text-base sm:text-lg font-bold tracking-tight uppercase text-white">
               IP-SAKTI Sahayak
             </h1>
-            <span className="text-[#3A86C8] text-[10px] font-mono font-bold px-1.5 py-0.5 border border-[#3A86C8] rounded uppercase">
-              v1.0 • Citations
-            </span>
+            {onOpenGateway ? (
+              <button
+                type="button"
+                onClick={onOpenGateway}
+                title="View Gateway Initialization Telemetry"
+                className="text-[#3A86C8] hover:text-blue-300 hover:border-blue-400 text-[10px] font-mono font-bold px-1.5 py-0.5 border border-[#3A86C8] rounded uppercase transition-colors cursor-pointer"
+              >
+                v1.0 • Citations
+              </button>
+            ) : (
+              <span className="text-[#3A86C8] text-[10px] font-mono font-bold px-1.5 py-0.5 border border-[#3A86C8] rounded uppercase">
+                v1.0 • Citations
+              </span>
+            )}
           </div>
           <p className="hidden sm:block text-[11px] text-slate-400 font-medium leading-none mt-0.5">
             Ayurveda Legal & IP Compliance Assistant

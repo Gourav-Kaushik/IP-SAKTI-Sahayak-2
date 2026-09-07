@@ -6,6 +6,7 @@ import { ChatWindow } from './components/ChatWindow.js';
 import { HighDensitySidebar } from './components/HighDensitySidebar.js';
 import { CorpusExplorerModal } from './components/CorpusExplorerModal.js';
 import { AuditModal } from './components/AuditModal.js';
+import { StartupLoadingScreen } from './components/StartupLoadingScreen.js';
 import {
   ChatMessage,
   ClassificationResult,
@@ -14,6 +15,7 @@ import {
 } from './types.js';
 
 export default function App() {
+  const [isStartingUp, setIsStartingUp] = useState<boolean>(true);
   const [sessionId, setSessionId] = useState<string>('');
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction>('national');
   const [language, setLanguage] = useState<LanguageCode>('en');
@@ -177,6 +179,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#CFE8FF] font-sans text-[#0D1B2A]">
+      {/* 0. Initial Startup Loading Screen */}
+      {isStartingUp && (
+        <StartupLoadingScreen onComplete={() => setIsStartingUp(false)} />
+      )}
+
       {/* 1. Persistent Disclaimer Bar */}
       <DisclaimerBar language={language} />
 
@@ -190,6 +197,7 @@ export default function App() {
         onOpenWizard={() => setShowWizard(true)}
         onOpenCorpus={() => setShowCorpusModal(true)}
         onOpenAudit={() => setShowAuditModal(true)}
+        onOpenGateway={() => setIsStartingUp(true)}
       />
 
       {/* 3. High Density Main Dashboard Container */}
