@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sakti-light: #CFE8FF;
+  --color-sakti-mid: #3A86C8;
+  --color-sakti-navy: #0D1B2A;
+  --color-sakti-darkblue: #1A365D;
+  --color-sakti-ice: #F0F7FF;
+  --color-sakti-slate: #2A4365;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-sakti-navy);
+  background-color: #F8FAFC;
+}

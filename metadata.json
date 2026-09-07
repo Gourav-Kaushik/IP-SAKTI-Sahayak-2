@@ -1,0 +1,6 @@
+{
+  "name": "IP-SAKTI Sahayak",
+  "description": "Multilingual, source-cited AI legal assistant for Ayurveda entrepreneurs on patents, biodiversity compliance, trademarks, and regulatory approvals across Indian and international IP regimes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
