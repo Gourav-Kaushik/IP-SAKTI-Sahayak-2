@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ip-sakti-sahayak
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
